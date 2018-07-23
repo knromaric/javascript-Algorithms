@@ -21,7 +21,21 @@ class Tree {
     }
 
     traverseBF(fn) {
+        let temp = [this.root];
+        while(temp.length){
+            const node = temp.shift();   
+            temp.push(...node.children);
+            fn(node);
+        }
+    }
 
+    traverseDF(fn) {
+        let temp = [this.root];
+        while(temp.length) {
+            const node = temp.shift();
+            temp.unshift(...node.children);
+            fn(node);
+        }
     }
 }
 
